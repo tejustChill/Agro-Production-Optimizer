@@ -1,5 +1,10 @@
 # Crop Recommendation System 🌾
 
+## 🌐 Live Demo
+You can try out the live application here: [Agro Production Optimizer](https://agro-production-optimizer.onrender.com)
+
+> **Note:** The application is hosted on a free tier. If the site is inactive, it may take 30-60 seconds to "wake up" upon the first visit.
+
 An intelligent agricultural tool that recommends the most suitable crop to grow based on soil nutrients and environmental conditions. This project uses **Machine Learning (Logistic Regression)** and is deployed via a **Flask** web application.
 
 ## 🚀 Features
@@ -72,3 +77,12 @@ Open `http://127.0.0.1:5000` in your browser.
 The model is trained on a dataset containing parameters for Nitrogen (N), Phosphorus (P), Potassium (K), Temperature, Humidity, pH, and Rainfall.
 
 ---
+## 🧪 How it Works
+The system takes 7 key soil and environmental factors as input:
+1. **N-P-K**: Nitrogen, Phosphorus, and Potassium levels in the soil.
+2. **Temperature & Humidity**: Local climate conditions.
+3. **pH**: The acidity or alkalinity of the soil.
+4. **Rainfall**: Average annual or seasonal precipitation.
+
+The **Logistic Regression** model then processes these inputs to find the crop with the highest probability of success in those specific conditions.
+
