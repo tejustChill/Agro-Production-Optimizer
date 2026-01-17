@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro-Optimizer | Smart Farming</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+            padding-bottom: 50px;
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            margin-top: 50px;
+        }
+
+        .header-title {
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Styling Input Fields */
+        .input-group-custom {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+            border: 2px solid transparent;
+        }
+
+        .input-group-custom:focus-within {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-color: var(--primary-color);
+        }
+
+        .input-group-custom img {
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+        }
+
+        .input-group-custom input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            height: 50px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Button Styling */
+        .btn-predict {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            padding: 15px 40px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .btn-predict:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.6);
+            color: white;
+        }
+
+        /* Result Section */
+        .result-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .crop-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: none;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .crop-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .crop-card img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .crop-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin: 0;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* Labels for Accessibility */
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+            color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="glass-container">
+                    <div class="text-center">
+                        <header class="header-title h1">Agro-Production Optimizer</header>
+                        <p class="mb-5">Enter soil and environmental parameters to find the best crop for your land.</p>
+                    </div>
+
+                    <form action="." method="post">
+                        <div class="row">
+                            <!-- Nitrogen -->
+                            <div class="col-md-6">
+                                <label>Nitrogen (N)</label>
+                                <div class="input-group-custom">
+                                    <img src="/static/images/nitrogen.png" alt="N">
+                                    <input type="number" step="any" required placeholder="Soil Nitrogen %" name="nitro">
+                                </div>
+                            </div>
+                            <!-- Phosphorus -->
+                            <div class="col-md-6">
+                                <label>Phosphorus (P)</label>
+                                <div class="input-group-custom">
+                                    <img src="/static/images/phosphorus.png" alt="P">
+                                    <input type="number" step="any" required placeholder="Soil Phosphorus %" name="phos">
+                                </div>
+                            </div>
+                            <!-- Potassium -->
+                            <div class="col-md-6">
+                                <label>Potassium (K)</label>
+                                <div class="input-group-custom">
+                                    <img src="/static/images/potassium.png" alt="K">
+                                    <input type="number" step="any" required placeholder="Soil Potassium %" name="pota">
+                                </div>
+                            </div>
+                            <!-- Temperature -->
+                            <div class="col-md-6">
+                                <label>Temperature (°C)</label>
+                                <div class="input-group-custom">
+                                    <img src="/static/images/temp.png" alt="Temp">
+                                    <input type="number" step="any" required placeholder="Temperature in Celsius" name="temp">
+                                </div>
+                            </div>
+                            <!-- Humidity -->
+                            <div class="col-md-6">
+                                <label>Humidity (%)</label>
+                                <div class="input-group-custom">
+                                    <img src="/static/images/humidity.png" alt="Hum">
+                                    <input type="number" step="any" required placeholder="Environment Humidity" name="hum">
+                                </div>
+                            </div>
+                            <!-- pH -->
+                            <div class="col-md-6">
+                                <label>Soil pH</label>
+                                <div class="input-group-custom">
+                                    <img src="/static/images/ph.png" alt="pH">
+                                    <input type="number" step="any" required placeholder="pH value (0-14)" name="ph">
+                                </div>
+                            </div>
+                            <!-- Rainfall -->
+                            <div class="col-12">
+                                <label>Rainfall (mm)</label>
+                                <div class="input-group-custom">
+                                    <img src="/static/images/downpour.png" alt="Rain">
+                                    <input type="number" step="any" required placeholder="Average annual rainfall" name="rain">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-predict">
+                                <i class="fas fa-seedling mr-2"></i> GET CULTIVATION RECOMMENDATION
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Results Section -->
+                    {% if res %}
+                    <div class="result-section animated fadeIn">
+                        <h2 class="text-center mb-4">Recommended Crops</h2>
+                        <div class="row justify-content-center">
+                            {% for i in res %}
+                            <div class="col-md-4">
+                                <div class="card crop-card">
+                                    <img src="{{res[i]}}" alt="{{i}}">
+                                    <div class="card-body p-0">
+                                        <h2>{{i}}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

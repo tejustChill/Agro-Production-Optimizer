@@ -1,0 +1,22 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Python Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE Settings
+.vscode/
+.idea/
+
+# Distribution / Build
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
